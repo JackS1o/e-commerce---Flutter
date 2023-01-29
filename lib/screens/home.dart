@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../api/requests.dart';
+import '../widgets/products.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,17 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Erro ao carregar dados'),
               );
             } else if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(snapshot.data[index]['nome']),
-                    subtitle: Text(snapshot.data[index]['descricao']),
-                    leading: Image.network(snapshot.data[index]['imagem']),
-                    trailing: Text(snapshot.data[index]['preco']),
-                  );
-                },
-              );
+              return buildProductsList(snapshot.data, context);
             } else {
               return const Center(
                 child: CircularProgressIndicator(),
