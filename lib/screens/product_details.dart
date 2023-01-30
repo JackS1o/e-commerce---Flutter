@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 import '../api/requests.dart';
 
@@ -28,7 +31,7 @@ class _ProductDetailState extends State<ProductDetail> {
           } else if (snapshot.hasData) {
             return SizedBox(
               height: double.infinity,
-              width: double.infinity,
+              width: 500,
               child: Card(
                 child: Column(
                   children: [
@@ -47,10 +50,32 @@ class _ProductDetailState extends State<ProductDetail> {
                     Text(snapshot.data!['descricao']),
                     Text(snapshot.data!['categoria']),
                     Text(snapshot.data!['material']),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          child: const Text('Adicionar ao Carrinho'),
+                          onPressed: () {
+                            // Adicionar código para adicionar item ao carrinho aqui
+                          },
+                        ).width(200),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Adicionar código para adicionar item ao carrinho aqui
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 241, 93, 93),
+                          ),
+                          child: const Text('Comprar'),
+                        ).width(200),
+                      ],
+                    ).alignment(Alignment.center),
                   ],
                 ),
               ),
-            );
+            ).alignment(Alignment.center);
           } else {
             return const Center(
               child: CircularProgressIndicator(),
