@@ -13,7 +13,11 @@ class ShoppingCartModel with ChangeNotifier {
 
   void addToCart(Map<String, dynamic> product) {
     _shoppingCart.add(product);
-    print(_shoppingCart.length);
+    notifyListeners();
+  }
+
+  void removeFromCart(Map<String, dynamic> product) {
+    _shoppingCart.remove(product);
     notifyListeners();
   }
 }

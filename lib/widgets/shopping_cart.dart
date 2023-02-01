@@ -54,6 +54,17 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         IconButton(
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            shoppingCart.removeFromCart(uniqueItems[index]);
+                            setState(() {
+                              itemCount = {};
+                              total = 0;
+                            });
+                          },
+                        ),
+                        Text(itemCount[uniqueItems[index]['id']].toString()),
+                        IconButton(
                           icon: const Icon(Icons.add),
                           onPressed: () {
                             shoppingCart.addToCart(uniqueItems[index]);
