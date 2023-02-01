@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:e_commerce/widgets/shopping_cart.dart';
@@ -5,12 +7,13 @@ import 'package:styled_widget/styled_widget.dart';
 import '../screens/product_details.dart';
 
 class ShoppingCartModel with ChangeNotifier {
-  List<Map<String, dynamic>> _shoppingCart = [];
+  final List<Map<String, dynamic>> _shoppingCart = [];
 
   List<Map<String, dynamic>> get shoppingCart => _shoppingCart;
 
   void addToCart(Map<String, dynamic> product) {
     _shoppingCart.add(product);
+    print(_shoppingCart.length);
     notifyListeners();
   }
 }
