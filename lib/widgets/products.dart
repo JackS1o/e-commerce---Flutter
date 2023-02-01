@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:e_commerce/widgets/shopping_cart.dart';
+import 'package:styled_widget/styled_widget.dart';
 import '../screens/product_details.dart';
+
+class ShoppingCartModel with ChangeNotifier {
+  List<Map<String, dynamic>> _shoppingCart = [];
+
+  List<Map<String, dynamic>> get shoppingCart => _shoppingCart;
+
+  void addToCart(Map<String, dynamic> product) {
+    _shoppingCart.add(product);
+    notifyListeners();
+  }
+}
 
 Widget buildProductsList(List products, BuildContext context) =>
     ListView.builder(
@@ -10,14 +23,16 @@ Widget buildProductsList(List products, BuildContext context) =>
           onTap: () {
             int id = int.parse(products[index]['id']);
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ProductDetail(
-                          productId: id,
-                        )));
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductDetail(
+                  productId: id,
+                ),
+              ),
+            );
           },
           child: SizedBox(
-            height: 200,
+            height: 250,
             width: 200,
             child: Card(
               child: Column(
@@ -34,6 +49,34 @@ Widget buildProductsList(List products, BuildContext context) =>
                   ),
                   Text(products[index]['nome']),
                   Text(products[index]['preco']),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        child: const Text('Adicionar ao Carrinho'),
+                        onPressed: () {
+                          Provider.of<ShoppingCartModel>(context, listen: false)
+                              .addToCart(products[index]);
+                        },
+                      ).width(200),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ShoppingCartScreen(
+                                  key: Key('shoppingCartScreen')),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 241, 93, 93),
+                        ),
+                        child: const Text('Comprar'),
+                      ).width(200),
+                    ],
+                  ).alignment(Alignment.center),
                 ],
               ),
             ),
