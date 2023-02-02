@@ -1,9 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 import '../api/requests.dart';
+import '../widgets/products.dart';
+import '../widgets/shopping_cart.dart';
 
 class ProductDetail extends StatefulWidget {
   final int productId;
@@ -57,12 +60,20 @@ class _ProductDetailState extends State<ProductDetail> {
                         ElevatedButton(
                           child: const Text('Adicionar ao Carrinho'),
                           onPressed: () {
-                            // Adicionar código para adicionar item ao carrinho aqui
+                            Provider.of<ShoppingCartModel>(context,
+                                    listen: false)
+                                .addToCart(snapshot.data!);
                           },
                         ).width(200),
                         ElevatedButton(
                           onPressed: () {
-                            // Adicionar código para adicionar item ao carrinho aqui
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ShoppingCartScreen(
+                                    key: Key('shoppingCartScreen')),
+                              ),
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:

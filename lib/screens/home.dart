@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../api/requests.dart';
 import '../widgets/products.dart';
+import '../widgets/shopping_cart.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,6 +25,22 @@ class _HomeScreenState extends State<HomeScreen> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('E-Commerce'),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ShoppingCartScreen(
+                            key: Key('shoppingCartScreen')),
+                      ),
+                    );
+                  },
+                  child: const Icon(Icons.shopping_cart, size: 26.0)),
+            )
+          ],
         ),
         body: FutureBuilder(
           future: DataProvider.fetchData(),
