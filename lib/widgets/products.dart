@@ -68,6 +68,8 @@ Widget buildProductsList(List products, BuildContext context) =>
                       ).width(200),
                       ElevatedButton(
                         onPressed: () {
+                          Provider.of<ShoppingCartModel>(context, listen: false)
+                              .addToCart(products[index]);
                           Navigator.push(
                             context,
                             MaterialPageRoute(

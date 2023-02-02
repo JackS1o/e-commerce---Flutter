@@ -23,6 +23,22 @@ class _ProductDetailState extends State<ProductDetail> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product Detail'),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ShoppingCartScreen(
+                          key: Key('shoppingCartScreen')),
+                    ),
+                  );
+                },
+                child: const Icon(Icons.shopping_cart, size: 26.0)),
+          )
+        ],
       ),
       body: FutureBuilder(
         future: ProductDetailById.fetch(widget.productId),
@@ -67,6 +83,9 @@ class _ProductDetailState extends State<ProductDetail> {
                         ).width(200),
                         ElevatedButton(
                           onPressed: () {
+                            Provider.of<ShoppingCartModel>(context,
+                                    listen: false)
+                                .addToCart(snapshot.data!);
                             Navigator.push(
                               context,
                               MaterialPageRoute(

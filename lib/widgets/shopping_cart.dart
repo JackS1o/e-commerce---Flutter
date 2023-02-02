@@ -91,6 +91,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               ],
             ),
           ),
+          ElevatedButton(
+            onPressed: () {
+              // adicione aqui a lógica para finalizar a compra
+            },
+            child: const Text("Finalizar Compra"),
+          )
         ],
       ),
     );
