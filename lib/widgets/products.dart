@@ -1,10 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:e_commerce/widgets/shopping_cart.dart';
 import 'package:styled_widget/styled_widget.dart';
-import '../screens/product_details.dart';
+import '../screens/brazilian_product_details.dart';
+import '../screens/european_product_details.dart';
 
 class ShoppingCartModel with ChangeNotifier {
   final List<Map<String, dynamic>> _shoppingCart = [];
@@ -29,7 +28,7 @@ Widget buildProductsList(List products, BuildContext context) =>
         return InkWell(
           onTap: () {
             int id = int.parse(products[index]['id']);
-            if (products[index]['index'] < 80) {
+            if (products[index]['index'] < 159) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -38,12 +37,11 @@ Widget buildProductsList(List products, BuildContext context) =>
                   ),
                 ),
               );
-            }
-            if (products[index]['index'] > 79) {
+            } else {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProductDetail(
+                  builder: (context) => EuropeanProductDetail(
                     productId: id,
                   ),
                 ),
@@ -67,7 +65,8 @@ Widget buildProductsList(List products, BuildContext context) =>
                             : const CircularProgressIndicator(),
                   ),
                   Text(products[index]['nome']),
-                  Text(products[index]['preco']),
+                  Text("R\$ ${products[index]['preco']}"),
+                  Text(products[index]['desconto']),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

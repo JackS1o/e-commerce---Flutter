@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
@@ -8,16 +6,16 @@ import '../api/requests.dart';
 import '../widgets/products.dart';
 import '../widgets/shopping_cart.dart';
 
-class ProductDetail extends StatefulWidget {
+class EuropeanProductDetail extends StatefulWidget {
   final int productId;
 
-  const ProductDetail({super.key, required this.productId});
+  const EuropeanProductDetail({super.key, required this.productId});
 
   @override
-  State<ProductDetail> createState() => _ProductDetailState();
+  State<EuropeanProductDetail> createState() => _EuropeanProductDetailState();
 }
 
-class _ProductDetailState extends State<ProductDetail> {
+class _EuropeanProductDetailState extends State<EuropeanProductDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +39,7 @@ class _ProductDetailState extends State<ProductDetail> {
         ],
       ),
       body: FutureBuilder(
-        future: ProductDetailById.fetch(widget.productId),
+        future: ProductDetailByIdEuropeanProvider.fetch(widget.productId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(
@@ -65,10 +63,9 @@ class _ProductDetailState extends State<ProductDetail> {
                               : const CircularProgressIndicator(),
                     ),
                     Text(snapshot.data!['nome']),
-                    Text(snapshot.data!['preco']),
+                    Text("R\$ ${snapshot.data!['preco']}"),
                     Text(snapshot.data!['descricao']),
                     Text(snapshot.data!['categoria']),
-                    Text(snapshot.data!['material']),
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

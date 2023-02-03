@@ -31,7 +31,7 @@ class DataProvider {
     }
   }
 
-  static fetchAllData() {}
+  static void fetchProduct(Object productId) {}
 }
 
 class ProductDetailById {
@@ -49,9 +49,9 @@ class ProductDetailById {
 
 class DataEuropeanProvider {
   static var newData = [];
-  static var index = 80;
+  static var index = 158;
 
-  static Future fetchData() async {
+  static Future fetchEuropeanData() async {
     final response = await http.get(Uri.parse(
         'http://616d6bdb6dacbb001794ca17.mockapi.io/devnology/european_provider'));
     if (response.statusCode == 200) {
@@ -83,7 +83,17 @@ class ProductDetailByIdEuropeanProvider {
         'http://616d6bdb6dacbb001794ca17.mockapi.io/devnology/european_provider/$productId'));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      return responseJson;
+      var obj = {
+        'id': responseJson['id'],
+        'nome': responseJson['name'],
+        'preco': responseJson['price'],
+        'imagem': responseJson['gallery'][0],
+        'hasDiscount': responseJson['hasDiscount'],
+        'descricao': responseJson['description'],
+        'desconto': responseJson['discountValue'],
+        'categoria': '',
+      };
+      return obj;
     } else {
       throw Exception('Failed to load data');
     }
@@ -93,8 +103,9 @@ class ProductDetailByIdEuropeanProvider {
 class DataConcact {
   static Future fetchAllData() async {
     final response1 = DataProvider.fetchData();
-    final response2 = DataEuropeanProvider.fetchData();
+    final response2 = DataEuropeanProvider.fetchEuropeanData();
     final response3 = await Future.wait([response1, response2]);
-    return response3[0];
+    final response4 = [...response3[0], ...response3[1]];
+    return response4;
   }
 }
