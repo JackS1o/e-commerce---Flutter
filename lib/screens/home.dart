@@ -29,21 +29,23 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ShoppingCartScreen(
-                            key: Key('shoppingCartScreen')),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ShoppingCartScreen(
+                        key: Key('shoppingCartScreen'),
                       ),
-                    );
-                  },
-                  child: const Icon(Icons.shopping_cart, size: 26.0)),
+                    ),
+                  );
+                },
+                child: const Icon(Icons.shopping_cart, size: 26.0),
+              ),
             )
           ],
         ),
         body: FutureBuilder(
-          future: DataProvider.fetchData(),
+          future: DataConcact.fetchAllData(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return const Center(

@@ -29,14 +29,26 @@ Widget buildProductsList(List products, BuildContext context) =>
         return InkWell(
           onTap: () {
             int id = int.parse(products[index]['id']);
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ProductDetail(
-                  productId: id,
+            if (products[index]['index'] < 80) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductDetail(
+                    productId: id,
+                  ),
                 ),
-              ),
-            );
+              );
+            }
+            if (products[index]['index'] > 79) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductDetail(
+                    productId: id,
+                  ),
+                ),
+              );
+            }
           },
           child: SizedBox(
             height: 250,
