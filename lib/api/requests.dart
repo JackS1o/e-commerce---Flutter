@@ -19,8 +19,8 @@ class DataProvider {
               'preco': data['preco'],
               'imagem': data['imagem'],
               'descricao': data['descricao'],
-              'hasDiscount': '',
-              'desconto': '',
+              'hasDiscount': null,
+              'desconto': null,
               'index': index += 1,
             },
           )

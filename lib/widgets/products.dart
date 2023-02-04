@@ -66,7 +66,11 @@ Widget buildProductsList(List products, BuildContext context) =>
                   ),
                   Text(products[index]['nome']),
                   Text("R\$ ${products[index]['preco']}"),
-                  Text(products[index]['desconto']),
+                  Text(
+                      products[index]['desconto'] != null
+                          ? "Com desconto R\$ ${double.parse(products[index]['preco'].replaceAll(",", ".")) - double.parse(products[index]['desconto'].replaceAll(",", "."))}"
+                          : '',
+                      style: const TextStyle(color: Colors.red)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

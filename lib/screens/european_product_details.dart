@@ -64,6 +64,10 @@ class _EuropeanProductDetailState extends State<EuropeanProductDetail> {
                     ),
                     Text(snapshot.data!['nome']),
                     Text("R\$ ${snapshot.data!['preco']}"),
+                    Text(
+                      "Com desconto R\$ ${double.parse(snapshot.data!['preco'].replaceAll(",", ".")) - double.parse(snapshot.data!['desconto'].replaceAll(",", "."))}",
+                      style: const TextStyle(color: Colors.red),
+                    ),
                     Text(snapshot.data!['descricao']),
                     Text(snapshot.data!['categoria']),
                     const SizedBox(height: 10),

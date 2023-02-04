@@ -20,7 +20,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     uniqueItems = shoppingCart.shoppingCart.toSet().toList();
 
     for (var item in shoppingCart.shoppingCart) {
-      total += double.parse(item['preco'].replaceAll(",", "."));
+      total += double.parse(item['preco'].replaceAll(",", ".")) -
+          double.parse(item['desconto'].replaceAll(",", "."));
       if (itemCount.containsKey(item['id'])) {
         itemCount[item['id']] = itemCount[item['id']]! + 1;
       } else {
@@ -47,7 +48,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   ),
                   title: Text(uniqueItems[index]['nome']),
                   subtitle: Text(
-                      "${uniqueItems[index]['preco']} x ${itemCount[uniqueItems[index]['id']]}"),
+                      "${double.parse(uniqueItems[index]['preco'].replaceAll(",", ".")) - double.parse(uniqueItems[index]['desconto'].replaceAll(",", "."))} x ${itemCount[uniqueItems[index]['id']]}"),
                   trailing: SizedBox(
                     width: 100,
                     child: Row(
