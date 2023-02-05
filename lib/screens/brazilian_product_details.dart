@@ -63,7 +63,7 @@ class _ProductDetailState extends State<ProductDetail> {
                               : const CircularProgressIndicator(),
                     ),
                     Text(snapshot.data!['nome']),
-                    Text("R\$ ${snapshot.data!['preco']}"),
+                    Text("R\$ ${snapshot.data!['preco'].replaceAll('.', ',')}"),
                     Text(snapshot.data!['descricao']),
                     Text(snapshot.data!['categoria']),
                     Text(snapshot.data!['material']),
