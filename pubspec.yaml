@@ -39,6 +39,7 @@ dependencies:
   dio: ^4.0.6
   styled_widget: ^0.4.1
   provider:
+  email_validator: ^2.0.1
 
 dev_dependencies:
   flutter_test:
