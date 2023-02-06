@@ -67,17 +67,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontWeight: FontWeight.bold,
                                   )),
                             ),
+                            RadioListTile(
+                              value: 'vazio',
+                              groupValue: data,
+                              onChanged: (value) {
+                                setState(() {
+                                  data = value!;
+                                });
+                              },
+                              title: const Text("Limpar filtro",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 244, 139, 54),
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ),
                           ],
                         ),
                         actions: [
                           ElevatedButton(
-                            child: const Text("Cancelar"),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          ElevatedButton(
-                            child: const Text("Aplicar"),
+                            child: const Text("Ok"),
                             onPressed: () {
                               Navigator.of(context).pop();
                             },

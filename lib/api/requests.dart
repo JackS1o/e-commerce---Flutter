@@ -108,6 +108,4 @@ class DataConcact {
     final response4 = [...response3[0], ...response3[1]];
     return response4;
   }
-
-  static fetchData() {}
 }
