@@ -1,6 +1,7 @@
 import 'package:e_commerce/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,26 +14,6 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   late String _email, _password;
 
-  void _showDialog(String title, String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: Text(message),
-          actions: <Widget>[
-            ElevatedButton(
-              child: const Text("Fechar"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,18 +23,18 @@ class _LoginPageState extends State<LoginPage> {
       body: Form(
         key: _formKey,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 validator: (input) {
                   if (input!.isEmpty) {
-                    return 'Please enter an email';
+                    return 'Por favor, insira um email';
                   }
                   if (!EmailValidator.validate(input)) {
-                    return "Please enter a valid email address";
+                    return "Por favor, insira um email válido";
                   }
-                  return null;
                 },
                 onSaved: (input) => _email = input!,
                 decoration: const InputDecoration(labelText: 'Email'),
@@ -86,11 +67,11 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 }
               },
-              child: const Text("Submit"),
+              child: const Text("Login"),
             ),
           ],
         ),
-      ),
+      ).width(400).alignment(Alignment.center),
     );
   }
 }
