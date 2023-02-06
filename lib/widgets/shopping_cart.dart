@@ -20,8 +20,11 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     uniqueItems = shoppingCart.shoppingCart.toSet().toList();
 
     for (var item in shoppingCart.shoppingCart) {
-      total += double.parse(item['preco'].replaceAll(",", ".")) -
-          double.parse(item['desconto'].replaceAll(",", "."));
+      if (item['desconto'] != null) {
+        total += double.parse(item['preco'].replaceAll(",", ".")) -
+            double.parse(item['desconto'].replaceAll(",", "."));
+      }
+      total += double.parse(item['preco'].replaceAll(",", "."));
       if (itemCount.containsKey(item['id'])) {
         itemCount[item['id']] = itemCount[item['id']]! + 1;
       } else {
@@ -47,8 +50,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     fit: BoxFit.contain,
                   ),
                   title: Text(uniqueItems[index]['nome']),
-                  subtitle: Text(
-                      "${double.parse(uniqueItems[index]['preco'].replaceAll(",", ".")) - double.parse(uniqueItems[index]['desconto'].replaceAll(",", "."))} x ${itemCount[uniqueItems[index]['id']]}"),
+                  subtitle: Text(uniqueItems[index]['desconto'] != null
+                      ? "${double.parse(uniqueItems[index]['preco'].replaceAll(",", ".")) - double.parse(uniqueItems[index]['desconto'].replaceAll(",", "."))} x ${itemCount[uniqueItems[index]['id']]}"
+                      : "${uniqueItems[index]['preco']} x ${itemCount[uniqueItems[index]['id']]}"),
                   trailing: SizedBox(
                     width: 100,
                     child: Row(
