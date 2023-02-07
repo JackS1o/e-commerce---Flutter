@@ -1,4 +1,4 @@
-# e_commerce Flutter
+# E_commerce Flutter
 
 Tecnologias utilizadas:
 
@@ -18,6 +18,7 @@ Tecnologias utilizadas:
 
 - Login
 - Listagem de produtos
+- Filtragem de produtos
 - Adicionar produtos ao carrinho
 - Remover produtos do carrinho
 - Listagem de produtos no carrinho
@@ -33,10 +34,7 @@ Se trata de um E-commerce desenvolvido em Flutter no Frontend e NodeJS no Backen
 - Clone o repositório
 - Rode o comando `flutter pub get` para instalar as dependências
 - Rode o comando `flutter run -d chrome --web-renderer html` para rodar o frontend da aplicação.
-
-## Como rodar o servidor
-
-- No diretório `backend` Rode o comando `docker-compose up -d` . O docker irá subir o container com o banco de dados e o servidor e o mesmo ficará disponível na porta 3000.
+- No diretório `backend` Rode o comando `docker-compose up -d` . O docker irá subir o container com o banco de dados e o servidor, o mesmo ficará disponível na porta 3000.
 
 ## Desafios encontrados e como foram resolvidos 
 
