@@ -1,16 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
+  const Product = sequelize.define(
     "Product",
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false,
       },
       userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         foreignKey: true,
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
         references: {
           model: "users",
           key: "id",
@@ -32,21 +35,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      onUpdate: "CASCADE",
-      onDelete: "CASCADE",
-      createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
     },
     {
       timestamps: false,
       tableName: "products",
     }
   );
-  return User;
+
+  Product.associate = (models) => {
+    Product.belongsTo(models.User, { foreignKey: "userId", as: "user" });
+  };
+
+  return Product;
 };

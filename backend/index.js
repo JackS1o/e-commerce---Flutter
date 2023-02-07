@@ -1,7 +1,8 @@
 require("dotenv").config();
 const app = require("./api");
 
-const Controller = require("./controllers/userController");
+const userController = require("./controllers/userController");
+const productController = require("./controllers/productController");
 
 const port = process.env.API_PORT || 3000;
 
@@ -9,6 +10,8 @@ app.get("/", (_request, response) => {
   response.send();
 });
 
-app.post("/user", Controller.createUser);
+app.post("/user", userController.createUser);
 
-app.listen(port, () => console.log("ouvindo porta", port));
+app.post("/product", productController.createProduct);
+
+app.listen(port, () => console.log("listening port", port));
