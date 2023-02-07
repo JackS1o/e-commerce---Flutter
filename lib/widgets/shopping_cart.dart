@@ -3,6 +3,8 @@ import 'package:e_commerce/widgets/products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/home.dart';
+
 class ShoppingCartScreen extends StatefulWidget {
   const ShoppingCartScreen({required Key key}) : super(key: key);
 
@@ -102,6 +104,17 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               UserProducts.fetchUserProducts(
                 uniqueItems,
                 itemCount,
+              );
+              setState(() {
+                shoppingCart.clearCart();
+                itemCount = {};
+                total = 0;
+              });
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomeScreen(),
+                ),
               );
             },
             child: const Text("Finalizar Compra"),

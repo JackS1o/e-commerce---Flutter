@@ -165,3 +165,21 @@ class UserProducts {
     }
   }
 }
+
+class GetUserProducts {
+  static Future getUserProducts() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getInt('userId');
+    final response = await http.get(
+      Uri.parse(
+        'http://localhost:3000/product/$userId',
+      ),
+    );
+    if (response.statusCode == 200) {
+      final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      return responseJson;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+}

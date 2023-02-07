@@ -10,12 +10,12 @@ const createProduct = async (body) => {
   return product;
 };
 
-// const getAllProducts = async () => {
-//   const products = await Product.findAll();
-//   return products;
-// };
+const getUserProducts = async (id) => {
+  const products = await Product.findAll({ where: { userId: id } });
+  return products;
+};
 
 module.exports = {
   createProduct,
-  // getAllProducts,
+  getUserProducts,
 };

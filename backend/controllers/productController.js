@@ -6,12 +6,13 @@ const createProduct = async (req, res) => {
   return res.status(200).json(product);
 };
 
-const getAllProducts = async (_req, res) => {
-  const products = await Service.getAllProducts();
+const getUserProducts = async (req, res) => {
+  const { id } = req.params;
+  const products = await Service.getUserProducts(id);
   return res.status(200).json(products);
-}
+};
 
 module.exports = {
   createProduct,
-  getAllProducts,
+  getUserProducts,
 };

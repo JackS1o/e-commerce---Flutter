@@ -19,6 +19,11 @@ class ShoppingCartModel with ChangeNotifier {
     _shoppingCart.remove(product);
     notifyListeners();
   }
+
+  void clearCart() {
+    _shoppingCart.clear();
+    notifyListeners();
+  }
 }
 
 Widget buildProductsList(List products, BuildContext context) =>

@@ -14,4 +14,6 @@ app.post("/user", userController.createUser);
 
 app.post("/product", productController.createProduct);
 
+app.get("/product/:id", productController.getUserProducts);
+
 app.listen(port, () => console.log("listening port", port));

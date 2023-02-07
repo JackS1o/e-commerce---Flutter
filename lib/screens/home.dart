@@ -1,3 +1,4 @@
+import 'package:e_commerce/screens/profile.dart';
 import 'package:flutter/material.dart';
 import '../api/requests.dart';
 import '../widgets/products.dart';
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   data = value!;
                                 });
                               },
-                              title: const Text("Mais barato > caro",
+                              title: const Text("Mais barato",
                                   style: TextStyle(
                                     color: Color.fromARGB(255, 153, 151, 51),
                                     fontWeight: FontWeight.bold,
@@ -61,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   data = value!;
                                 });
                               },
-                              title: const Text("Mais caro > barato",
+                              title: const Text("Mais caro",
                                   style: TextStyle(
                                     color: Color.fromARGB(255, 244, 139, 54),
                                     fontWeight: FontWeight.bold,
@@ -112,6 +113,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: const Icon(Icons.shopping_cart, size: 26.0),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UserProfile(
+                        key: Key('userProfile'),
+                      ),
+                    ),
+                  );
+                },
+                child: const Icon(Icons.person, size: 26.0),
               ),
             ),
           ],
