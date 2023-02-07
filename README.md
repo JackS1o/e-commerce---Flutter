@@ -4,12 +4,12 @@
 
 Se trata de um E-commerce desenvolvido em Flutter no Frontend e NodeJS no Backend. Essa aplicação é uma loja virtual onde o usuário pode realizar compras de produtos cadastrados no sistema. O usuário pode realizar o login na aplicação e após isso ele pode adicionar produtos ao carrinho e finalizar a compra. O usuário também pode visualizar as compras realizadas na aplicação. 
 
-## Como rodar o projeto
+## Como executar o projeto
 
 - Clone o repositório
-- Rode o comando `flutter pub get` para instalar as dependências
-- Rode o comando `flutter run -d chrome --web-renderer html` para rodar o frontend da aplicação.
-- No diretório `backend` Rode o comando `docker-compose up -d` . O docker irá subir o container com o banco de dados e o servidor, o mesmo ficará disponível na porta 3000.
+- Execute o comando `flutter pub get` para instalar as dependências
+- Execute o comando `flutter run -d chrome --web-renderer html` para rodar o frontend da aplicação.
+- No diretório `backend` execute o comando `docker-compose up -d` . O docker irá subir o container com o banco de dados e o servidor, o mesmo ficará disponível na porta 3000.
 
 ## Desafios encontrados e como foram resolvidos 
 
