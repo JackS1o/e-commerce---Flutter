@@ -109,3 +109,24 @@ class DataConcact {
     return response4;
   }
 }
+
+class UserLogin {
+  static Future fetchUserLogin(userData) async {
+    final response = await http.post(
+      Uri.parse(
+        'http://localhost:3000/user',
+      ),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        'email': userData['email'],
+        'password': userData['password'],
+      }),
+    );
+    if (response.statusCode == 200) {
+      final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      return responseJson;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+}

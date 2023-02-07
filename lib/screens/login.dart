@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:styled_widget/styled_widget.dart';
 
+import '../api/requests.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -57,6 +59,10 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
+                  UserLogin.fetchUserLogin({
+                    'email': _email,
+                    'password': _password,
+                  });
                   Navigator.push(
                     context,
                     MaterialPageRoute(
