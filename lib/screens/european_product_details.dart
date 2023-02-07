@@ -20,7 +20,7 @@ class _EuropeanProductDetailState extends State<EuropeanProductDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Product Detail'),
+        title: const Text('Detalhes do Produto'),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
