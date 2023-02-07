@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DataProvider {
   static var newData = [];
@@ -121,6 +122,40 @@ class UserLogin {
         'email': userData['email'],
         'password': userData['password'],
       }),
+    );
+    if (response.statusCode == 200) {
+      final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setInt('userId', responseJson);
+      return responseJson;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+}
+
+class UserProducts {
+  static var products;
+
+  static Future fetchUserProducts(uniqueItems, itemCount) async {
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getInt('userId');
+    products = uniqueItems
+        .map((item) => {
+              'userId': userId,
+              'name': item['nome'],
+              'price': item['preco'],
+              'image': item['imagem'],
+              'quantity': itemCount[item['id']],
+            })
+        .toList();
+
+    final response = await http.post(
+      Uri.parse(
+        'http://localhost:3000/product',
+      ),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode(products),
     );
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));

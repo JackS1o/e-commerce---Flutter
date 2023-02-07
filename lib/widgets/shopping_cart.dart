@@ -1,3 +1,4 @@
+import 'package:e_commerce/api/requests.dart';
 import 'package:e_commerce/widgets/products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -98,7 +99,10 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
           ),
           ElevatedButton(
             onPressed: () {
-              // adicione aqui a lógica para finalizar a compra
+              UserProducts.fetchUserProducts(
+                uniqueItems,
+                itemCount,
+              );
             },
             child: const Text("Finalizar Compra"),
           )

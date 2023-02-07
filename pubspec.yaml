@@ -40,6 +40,7 @@ dependencies:
   styled_widget: ^0.4.1
   provider:
   email_validator: ^2.0.1
+  shared_preferences: 2.0.17
 
 dev_dependencies:
   flutter_test:
