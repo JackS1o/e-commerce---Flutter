@@ -1,16 +1,43 @@
-# e_commerce
+# e_commerce Flutter
 
-A new Flutter project.
+Tecnologias utilizadas:
 
-## Getting Started
+- Flutter
+- Dart
+- HTTP
+- Provider
+- shared_preferences
+- Docker
+- NodeJS
+- Express
+- MySQL
+- Sequelize
+- Cors
 
-This project is a starting point for a Flutter application.
+## Funcionalidades da aplicação
 
-A few resources to get you started if this is your first Flutter project:
+- Login
+- Listagem de produtos
+- Adicionar produtos ao carrinho
+- Remover produtos do carrinho
+- Listagem de produtos no carrinho
+- Finalizar compra
+- Listagem de compras realizadas
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Sobre o projeto
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Se trata de um E-commerce desenvolvido em Flutter no Frontend e NodeJS no Backend. Essa aplicação é uma loja virtual onde o usuário pode realizar compras de produtos cadastrados no sistema. O usuário pode realizar o login na aplicação e após isso ele pode adicionar produtos ao carrinho e finalizar a compra. O usuário também pode visualizar as compras realizadas na aplicação. 
+
+## Como rodar o projeto
+
+- Clone o repositório
+- Rode o comando `flutter pub get` para instalar as dependências
+- Rode o comando `flutter run -d chrome --web-renderer html` para rodar o frontend da aplicação.
+
+## Como rodar o servidor
+
+- No diretório `backend` Rode o comando `docker-compose up -d` . O docker irá subir o container com o banco de dados e o servidor e o mesmo ficará disponível na porta 3000.
+
+## Desafios encontrados e como foram resolvidos 
+
+- A maior dificuldade que encontrei foi a sintaxe do Dart, pois nunca havia utilizado a linguagem e tive que aprender a utilizar a mesma em um curto espaço de tempo para desenvolver o projeto e também a sintaxe do Flutter, pois nunca havia utilizado a biblioteca. Nos primeiros dias de desenvolvimento tive que estudar bastante a linguagem e a biblioteca para conseguir evoluir. No final consegui desenvolver o projeto e aprender bastante sobre a linguagem e a biblioteca. Ela é muito interessante e possui muitas funcionalidades que facilitam o desenvolvimento de aplicações, como por exemplo o Provider que facilita a comunicação entre os widgets e o gerenciamento de estado da aplicação.
