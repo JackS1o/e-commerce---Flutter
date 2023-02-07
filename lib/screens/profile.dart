@@ -15,10 +15,10 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Perfil',
+      title: 'Meus Pedidos',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Perfil'),
+          title: const Text('Meus Pedidos'),
         ),
         body: FutureBuilder(
           future: GetUserProducts.getUserProducts(),

@@ -2,6 +2,7 @@ import 'package:e_commerce/api/requests.dart';
 import 'package:e_commerce/widgets/products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 import '../screens/home.dart';
 
@@ -118,7 +119,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               );
             },
             child: const Text("Finalizar Compra"),
-          )
+          ).padding(all: 20),
         ],
       ),
     );
