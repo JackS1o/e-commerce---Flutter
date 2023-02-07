@@ -27,8 +27,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       if (item['desconto'] != null) {
         total += double.parse(item['preco'].replaceAll(",", ".")) -
             double.parse(item['desconto'].replaceAll(",", "."));
+      } else {
+        total += double.parse(item['preco'].replaceAll(",", "."));
       }
-      total += double.parse(item['preco'].replaceAll(",", "."));
       if (itemCount.containsKey(item['id'])) {
         itemCount[item['id']] = itemCount[item['id']]! + 1;
       } else {

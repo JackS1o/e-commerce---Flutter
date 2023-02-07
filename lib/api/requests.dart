@@ -5,13 +5,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class DataProvider {
   static var newData = [];
-  static var index = 0;
 
   static Future fetchData() async {
     final response = await http.get(Uri.parse(
         'http://616d6bdb6dacbb001794ca17.mockapi.io/devnology/brazilian_provider'));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      var index = 0;
       newData = responseJson
           .map(
             (data) => {
@@ -50,13 +50,13 @@ class ProductDetailById {
 
 class DataEuropeanProvider {
   static var newData = [];
-  static var index = 158;
 
   static Future fetchEuropeanData() async {
     final response = await http.get(Uri.parse(
         'http://616d6bdb6dacbb001794ca17.mockapi.io/devnology/european_provider'));
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      var index = 88;
       newData = responseJson
           .map(
             (data) => {

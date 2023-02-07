@@ -37,7 +37,7 @@ Widget buildProductsList(List products, BuildContext context) =>
           (index) => InkWell(
             onTap: () {
               int id = int.parse(products[index]['id']);
-              if (products[index]['index'] < 159) {
+              if (products[index]['index'] <= 88) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
