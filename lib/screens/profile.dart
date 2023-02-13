@@ -56,6 +56,8 @@ class _UserProfileState extends State<UserProfile> {
                               Text(snapshot.data[index]['name']),
                               Text(
                                   "R\$ ${snapshot.data[index]['price'].replaceAll(",", ".")}"),
+                              Text(
+                                  "Quantidade: ${snapshot.data[index]['quantity'].toString()}"),
                             ],
                           ),
                         ),

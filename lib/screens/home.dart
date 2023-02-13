@@ -15,11 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   String data = '';
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,

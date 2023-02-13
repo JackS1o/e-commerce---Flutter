@@ -31,8 +31,6 @@ class DataProvider {
       throw Exception('Failed to load data');
     }
   }
-
-  static void fetchProduct(Object productId) {}
 }
 
 class ProductDetailById {
